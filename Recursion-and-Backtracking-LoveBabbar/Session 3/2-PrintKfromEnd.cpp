@@ -1,5 +1,4 @@
-#include <iostream>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Node
@@ -115,25 +114,34 @@ void deleteNode(int position, Node *&head)
 
 void PrintItt(Node *head)
 {
-    cout << head->next->next->data << endl;
     if (head == NULL)
     {
         return;
     }
-    while (head!= NULL)
+    while (head != NULL)
     {
         cout << head->data << " ";
         head = head->next;
     }
 }
-void Print(Node *head)
+void PrintKthFromEnd(Node *head, int& k)
 {
+    // base case
     if (head == NULL)
     {
         return;
     }
-    cout << head->data << " ";
-    Print(head->next);
+
+    // Recursive relation
+    PrintKthFromEnd(head->next, k);
+    k--;
+    // cout << head->data << " " << k << endl;
+
+    // operation
+    if (k == 0)
+    {
+        cout<<head->data<<" ";
+    }
 }
 
 int main()
@@ -141,7 +149,7 @@ int main()
     Node *head = NULL;
     Node *tail = NULL;
 
-    Node *root = new Node(5);
+    Node *root = new Node(55);
     head = tail = root;
 
     insertAtHead(head, 12);
@@ -150,7 +158,10 @@ int main()
     insertAtHead(head, 56);
     insertAtHead(head, 78);
     PrintItt(head);
-    cout<<endl;
-    Print(head);
+    cout << endl
+         << endl;
+    int k = 3;
+    PrintKthFromEnd(head, k);
+
     return 0;
 }

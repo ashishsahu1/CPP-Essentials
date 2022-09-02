@@ -1,5 +1,4 @@
-#include <iostream>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Node
@@ -115,25 +114,57 @@ void deleteNode(int position, Node *&head)
 
 void PrintItt(Node *head)
 {
-    cout << head->next->next->data << endl;
     if (head == NULL)
     {
         return;
     }
-    while (head!= NULL)
+    while (head != NULL)
     {
         cout << head->data << " ";
         head = head->next;
     }
 }
-void Print(Node *head)
-{
-    if (head == NULL)
-    {
-        return;
+
+Node *Reverse(Node* head){
+    if(head == NULL){
+        return NULL;
     }
-    cout << head->data << " ";
-    Print(head->next);
+
+    Node *temp = head;
+    Node *prev,*curr,*after;
+    prev = NULL;
+    curr = head;
+    while(curr!=NULL){
+        after = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = after;
+    }
+    return prev;
+}
+
+Node *KReverse(Node *head,int k){
+    if(head == NULL){
+        return NULL;
+    }
+
+    Node *prev, *curr, *after;
+    prev = NULL;
+    curr = head;
+    int count = 0;
+    while (curr != NULL && count<k)
+    {
+        after = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = after;
+        count++;
+    }
+    if(after != NULL){
+        head->next = KReverse(after,k);
+    }
+
+    return prev;
 }
 
 int main()
@@ -141,7 +172,7 @@ int main()
     Node *head = NULL;
     Node *tail = NULL;
 
-    Node *root = new Node(5);
+    Node *root = new Node(55);
     head = tail = root;
 
     insertAtHead(head, 12);
@@ -150,7 +181,17 @@ int main()
     insertAtHead(head, 56);
     insertAtHead(head, 78);
     PrintItt(head);
+    cout << endl
+         << endl;
+
+    head = Reverse(head);
+    PrintItt(head);
+
     cout<<endl;
-    Print(head);
+    int k =2;
+    head = KReverse(head,k);
+    PrintItt(head);
+
+
     return 0;
 }
