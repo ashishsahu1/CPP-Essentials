@@ -1,6 +1,6 @@
 # Recursion Programs 
 ## Level 1
-#### 1. Print Decreasing
+### 1. Print Decreasing
 ```
 void printDecreasing(int n){
     if(n<=0){
@@ -10,7 +10,10 @@ void printDecreasing(int n){
     printDecreasing(n-1);
 }
 ```
-#### 2. Print Increasing
+### 2. Print Increasing
+```
+
+```
 ### 3. Print Increasing Decreasing
 ### 4. Factorial
 ### 5. Power Linear
