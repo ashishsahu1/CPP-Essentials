@@ -103,10 +103,33 @@ void PrintPyramid_5(int n)
     }
 }
 
-int main()
+// **********
+// ****  ****
+// ***    ***
+// **      **
+// *        *
+void PrintPyramid_6(int n){
+    int k=-1;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n-i;j++){
+            cout<<"*";
+        }
+        for(int t=0;t<=k;t++){
+            cout<<" ";
+        }
+        for(int l=0;l<n-i;l++){
+            cout<<"*";
+        }
+        k+=2;
+        cout<<endl;
+    }
+}
+
+    int
+    main()
 {
     int n;
     cin >> n;
-    PrintPyramid_5(n);
+    PrintPyramid_6(n);
     return 0;
 }
